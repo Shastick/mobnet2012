@@ -1,0 +1,54 @@
+\documentclass[11pt, a4paper]{scrartcl}
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\topmargin=-0.9in      %
+\evensidemargin=-0.8in     %
+\oddsidemargin=-0.8in      %
+\textwidth=8in        %
+\textheight=10.3in       %
+\headsep=0.1in         %
+
+
+\begin{document}
+
+\section{Channel Capacity}
+
+\subsection{ALOHA}
+Probability of $k$ packets generated during a slot:
+
+\begin{equation}
+P(k) = \frac{G^ke^{-G}}{k!}
+\end{equation}
+
+Throughput:
+
+\begin{equation}
+P(1) = Ge^{-G}
+\end{equation}
+
+\section{Bianchi}
+
+\subsection{probabilities}
+$\pi$, probability of transmission, $p$, probability of collision:
+\begin{align}
+p &= 1-(1-\pi)^{N-1} \\
+\pi &= \frac{2}{ 1 + W_\textrm{min} + pW_\textrm{min}\sum^{m-1}_{k=0}(2p)^k}
+\end{align}
+
+\subsection{Saturation throughput}
+
+\begin{align}
+ \tau = \frac{E\lbrack\textrm{Payload Transmitted by user i in a slot time}\rbrack}{\textrm{Duration of slottime}} &= \frac{P_\textrm{s}P_{\textrm{tr}}L}{P_\textrm{s}P_{\textrm{tr}}T_{\textrm{s}} + P_\textrm{tr}(1-P_\textrm{s})T_\textrm{c} + (1-P_\textrm{tr})T_\textrm{id}}, \\
+ P_\textrm{s} = \frac{N\pi (1-\pi)^{N-1}}{1-(1-\pi)^N}, \\
+ P_\textrm{tr} = 1-(1-\pi)^N, \\
+ T_\textrm{s} = t_\textrm{header} + t_\textrm{payload} + \textrm{SIFS} + t_\textrm{ACK} + \textrm{DIFS} + \sigma,\\
+ T_\textrm{c} = t_\textrm{header} + t_\textrm{payload} + \textrm{SIFS} + \sigma
+\end{align}
+
+TODO : Times, and the Bianchi model's equation.
+
+\end{document}
+
+
+
