@@ -1,6 +1,7 @@
-\documentclass[11pt, a4paper]{scrartcl}
+\documentclass[11pt, a4paper,twocolumn]{scrartcl}
 \usepackage{amsmath}
 \usepackage{amssymb}
+\usepackage{multicol}
 
 \topmargin=-0.9in      %
 \evensidemargin=-0.8in     %
@@ -39,7 +40,8 @@ p &= 1-(1-\pi)^{N-1} \\
 \subsection{Saturation throughput}
 
 \begin{align}
- \tau = \frac{E\lbrack\textrm{Payload Transmitted by user i in a slot time}\rbrack}{\textrm{Duration of slottime}} &= \frac{P_\textrm{s}P_{\textrm{tr}}L}{P_\textrm{s}P_{\textrm{tr}}T_{\textrm{s}} + P_\textrm{tr}(1-P_\textrm{s})T_\textrm{c} + (1-P_\textrm{tr})T_\textrm{id}}, \\
+ \tau = \frac{E\lbrack\textrm{Payload Transmitted by user i in a slot time}\rbrack}{\textrm{Duration of slottime}} \\ 
+ = \frac{P_\textrm{s}P_{\textrm{tr}}L}{P_\textrm{s}P_{\textrm{tr}}T_{\textrm{s}} + P_\textrm{tr}(1-P_\textrm{s})T_\textrm{c} + (1-P_\textrm{tr})T_\textrm{id}}, \\
  P_\textrm{s} = \frac{N\pi (1-\pi)^{N-1}}{1-(1-\pi)^N}, \\
  P_\textrm{tr} = 1-(1-\pi)^N, \\
  T_\textrm{s} = t_\textrm{header} + t_\textrm{payload} + \textrm{SIFS} + t_\textrm{ACK} + \textrm{DIFS} + \sigma,\\
@@ -48,6 +50,112 @@ p &= 1-(1-\pi)^{N-1} \\
 
 TODO : Times, and the Bianchi model's equation.
 
+\section{Privacy Metrics}
+
+\subsection{Entropy-Based Anonymity}
+$A$ the anonymity set, $p_x$ the probability for an external observer that the action was performed by $x$:
+\begin{equation}
+	\sum_{\forall x \in A} p_x \log(p_x)
+\end{equation}
+
+\subsection{Entropy-Based Unlinkability}
+$I_1,I_2$, sets of elements to be related, $p_r$, the probability two elements are related for an external observator:
+\begin{equation}
+	\sum_{\forall R \subseteq I_1 \times I_2}p_r \log(p_r)
+\end{equation}
+
+\section{TODO: RFID STUFF}
+\section{TODO: LOCATION PRIVACY STUFF}
+\section{TODO: TCP setups in mobile networks}
+
+\section{Trunk dimensioning}
+For a trunk of $N$ channels, an offered load $A=\lambda E[X]$, $X$ the call duration, $Y$ the call arrival per sec $\sim$ Poisson($\lambda$) 
+\begin{align}
+	P_\textrm{Blocking} = P(\textrm{Drop a call because busy line})  \\
+	= \frac{A^N}{N!\sum^N_{i=0}(\frac{A^i}{i!})}
+\end{align}
+
+Each channel carries the traffic 
+
+\begin{equation}
+	\rho = \frac{(1 - P_\textrm{blocking})A}{N}
+\end{equation}
+
+\section{Cellular Geometry: Hexagons}
+
+\textbf{Area}: $A=1.5R^2\sqrt{3}$, Distance btw. adjacent cells: $d=\sqrt{3}R$
+
+\subsection{Co-channel interference}
+\begin{description}
+\item[Co-channel reuse ratio]: $Q = \frac{D}{R} = \sqrt{3N}$ with $D$ the \textbf{distance} to the nearest co-channel cell, $R$ the \textbf{radius} of a cell and $N$ the \textbf{cluster size}.
+
+\item[Signal to Interference ratio (SIR)]: $\textrm{SIR} = \frac{S}{I} = \frac{S}{\sum{i_0}_{i=1}I_i}$. With $S$ the desired signal \textbf{power}, $I_i$ the \textbf{interference power} from the $i$th interfering co-channel base-station, $i_0$ the \textbf{number of co-channel} interfering cells.
+
+\item[Average received power $P_r$]: $P_r = P_0(\frac{d}{d_0})^{-\alpha}$ or \\ 
+$P_r(\textrm{dBm}) = P_0(\textrm{dBm})-10\alpha\log(\frac{d}{d_0})$ with $P_0$ the power received from a small distance $d_0$ from the transmitter and $\alpha$ the path loss exponent.
+	
+\item[SIR in the corner of a cell]: $\frac{S}{I} = \frac{R^{-\alpha}}{\sum^{i_0}_{i=1}D_i^{-\alpha}}$
+
+\item[First interfering layer approximation]: $\frac{S}{I} = \frac{(\frac{D}{R})^\alpha}{i_0} = \frac{(\sqrt{3N})^\alpha}{i_0}$
+
+\end{description}
+
+\subsection{Capacity of a cellular network}
+For $B_\textrm{t}$ the total allocated spectrum and $B_\textrm{c}$ the channel bandwidth: 
+\begin{align}
+m = \frac{B_t}{B_c \frac{Q^2}{3}} = \frac{B_t}{B_c(\frac{6}{3^{\frac{\alpha}{2}}}(\frac{S}{I})_\textrm{min})^{\frac{2}{\alpha}}}
+\end{align}
+
+\subsection{CDMA Capacity: single cell case}
+For the bitrate $R$, available bandwidth $W$, noise spectral density $N_0$, thermal noise $\eta$, received user signal (at base station) $S$, we have a possible number $N$ of users:
+\begin{align}
+	N = 1 + \frac{W/R}{E_b/N_0} - (\frac{\eta}{S})
+\end{align}
+
+\subsection{TODO: CDMA multiple cells ?}
+
+\section{Antennas \& Propagation}
+Free space propagation, received power: $P_\textrm{R} = P_\textrm{T}\frac{A_\textrm{R}}{4\pi d^2}\eta_\textrm{R}$ with $\eta_\textrm{R}$ an efficiency parameter, $A_\textrm{R}$ the receiving antenna area.
+
+Focusing capability, depends on size in wavelength: \\ $G_\textrm{T} = 4\pi\eta_\textrm{T}A_\textrm{T}/\lambda^2$
+
+Directional emitter, received power: $P_\textrm{R} = P_\textrm{T}G_\textrm{T}\frac{A_\textrm{R}}{4\pi d^2}\eta_\textrm{R}$
+
+Free space received power: $P_\textrm{R} =  P_\textrm{T}G_\textrm{T}G_\textrm{R}(\frac{\lambda}{4\pi d})^2$
+
+\subsection{Propagation modes}
+\begin{multicols}{2}
+	\begin{description}
+		\item[Ground Wave] : $f \le 2$ Mhz
+		\item[Sky Wave]
+		\item[Line of Sight] : $f \ge 30$ Mhz
+	\end{description}
+\end{multicols}
+
+\subsection{Line of sight equations}
+Horizon distance $d$, antenna height $h$ and refraction adjustment factor $K = 4/3$:
+\begin{description}
+\item[Optical LOS]: $d = 3.57\sqrt{h}$
+\item[Effective LOS]: $d = 3.57\sqrt{Kh}$
+\item[Max LOS distance for two antennas :] $3.57(\sqrt{Kh_1} \sqrt{Kh_2})$
+\end{description}
+\section{Mobnet Decibels}
+$B = 10\log(\frac{P}{P_0})$
+
+\section{Free Space Loss}
+TODO PICKUP HERE
+\section{Wireless Security Requirements}
+
+\begin{multicols}{2}
+	\begin{description}
+		\item[Confidentiality]
+		\item[Authenticity]
+		\item[Replay Detection]
+		\item[Integrity]
+		\item[Access Control]
+		\item[Jamming Protection]
+	\end{description}
+\end{multicols}
 \end{document}
 
 
