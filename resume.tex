@@ -123,6 +123,8 @@ Directional emitter, received power: $P_\textrm{R} = P_\textrm{T}G_\textrm{T}\fr
 
 Free space received power: $P_\textrm{R} =  P_\textrm{T}G_\textrm{T}G_\textrm{R}(\frac{\lambda}{4\pi d})^2$
 
+Loss: $L = \frac{P_T}{P_R} = \frac{(4\pi d)^2}{G_RG_T\lambda^2} $
+
 \subsection{Propagation modes}
 \begin{multicols}{2}
 	\begin{description}
@@ -133,7 +135,7 @@ Free space received power: $P_\textrm{R} =  P_\textrm{T}G_\textrm{T}G_\textrm{R}
 \end{multicols}
 
 \subsection{Line of sight equations}
-Horizon distance $d$, antenna height $h$ and refraction adjustment factor $K = 4/3$:
+Horizon distance $d[\textrm{km}]$ in \textbf{kilometers}, antenna height $h[\textrm{m}]$ and refraction adjustment factor $K = 4/3$:
 \begin{description}
 \item[Optical LOS]: $d = 3.57\sqrt{h}$
 \item[Effective LOS]: $d = 3.57\sqrt{Kh}$
@@ -141,6 +143,9 @@ Horizon distance $d$, antenna height $h$ and refraction adjustment factor $K = 4
 \end{description}
 \section{Mobnet Decibels}
 $B = 10\log(\frac{P}{P_0})$
+
+\section{Noise}
+For signal power $S$, bitrate $R$, $k$ the Boltzmann constant and $T$ the temperature: $\frac{E_b}{N_0} = \frac{S/R}{N_0} = \frac{S}{kTR}$
 
 \section{Free Space Loss}
 TODO PICKUP HERE
