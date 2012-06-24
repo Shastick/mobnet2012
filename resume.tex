@@ -15,7 +15,8 @@
 
 \section{Channel Capacity}
 
-\subsection{ALOHA}
+\subsection{ALOHA} 
+%C'est pas slotted alpha ça? 
 Probability of $k$ packets generated during a slot:
 
 \begin{equation}
@@ -28,25 +29,43 @@ Throughput:
 P(1) = Ge^{-G}
 \end{equation}
 
+\subsection{CSMA}
+\paragraph{Non-persistent} If channel is busy, directly run back off algorithm
+\paragraph{p-persistent} If it is busy, they persist with sensing until the channel becomes idle. If it is idle:\\- With probability $p$, the station transmits its packet\\- With probability $1-p$, the station waits for a random time and senses again
+
+%Include slide 26 of A2 (throughput expressions)? 
+\section{WLAN}
+
+\section{DOMINO}
+\begin{tabular}{|p{4cm}|p{5.2cm}|}
+  \hline
+  Cheating Method & Detection Test \\\hline
+  Frame scrambling & Number of retransmissions \\
+  Oversized NAV1 & Comparison of the declared and actual NAV values\\
+  Transmission before DIFS & Comparison of the idle time after the last ACK with DIFS \\
+  Backoff manipulation & Actual Backoff/ Consecutive Backoff \\
+  Frame scrambling with MAC forging & Periodic dummy frame injection\\
+   \hline
+\end{tabular}
 \section{Bianchi}
 
 \subsection{probabilities}
 $\pi$, probability of transmission, $p$, probability of collision:
-\begin{align}
+\begin{align*}
 p &= 1-(1-\pi)^{N-1} \\
 \pi &= \frac{2}{ 1 + W_\textrm{min} + pW_\textrm{min}\sum^{m-1}_{k=0}(2p)^k}
-\end{align}
+\end{align*}
 
 \subsection{Saturation throughput}
 
-\begin{align}
- \tau = \frac{E\lbrack\textrm{Payload Transmitted by user i in a slot time}\rbrack}{\textrm{Duration of slottime}} \\ 
- = \frac{P_\textrm{s}P_{\textrm{tr}}L}{P_\textrm{s}P_{\textrm{tr}}T_{\textrm{s}} + P_\textrm{tr}(1-P_\textrm{s})T_\textrm{c} + (1-P_\textrm{tr})T_\textrm{id}}, \\
- P_\textrm{s} = \frac{N\pi (1-\pi)^{N-1}}{1-(1-\pi)^N}, \\
- P_\textrm{tr} = 1-(1-\pi)^N, \\
- T_\textrm{s} = t_\textrm{header} + t_\textrm{payload} + \textrm{SIFS} + t_\textrm{ACK} + \textrm{DIFS} + \sigma,\\
- T_\textrm{c} = t_\textrm{header} + t_\textrm{payload} + \textrm{SIFS} + \sigma
-\end{align}
+\begin{align*}
+ \tau &= \frac{E\lbrack\textrm{Payload Transmitted by user i in a slot time}\rbrack}{E[\textrm{Duration of slot time}]} \\ 
+ &= \frac{P_\textrm{s}P_{\textrm{tr}}L}{P_\textrm{s}P_{\textrm{tr}}T_{\textrm{s}} + P_\textrm{tr}(1-P_\textrm{s})T_\textrm{c} + (1-P_\textrm{tr})T_\textrm{id}}, \\
+ P_\textrm{s} &= \frac{N\pi (1-\pi)^{N-1}}{1-(1-\pi)^N}, \\
+ P_\textrm{tr} &= 1-(1-\pi)^N, \\
+ T_\textrm{s} &= t_\textrm{header} + t_\textrm{payload} + \textrm{SIFS} + t_\textrm{ACK} + \textrm{DIFS} + \sigma,\\
+ T_\textrm{c} &= t_\textrm{header} + t_\textrm{payload} + \textrm{SIFS} + \sigma
+\end{align*}
 
 TODO : Times, and the Bianchi model's equation.
 
@@ -70,10 +89,10 @@ $I_1,I_2$, sets of elements to be related, $p_r$, the probability two elements a
 
 \section{Trunk dimensioning}
 For a trunk of $N$ channels, an offered load $A=\lambda E[X]$, $X$ the call duration, $Y$ the call arrival per sec $\sim$ Poisson($\lambda$) 
-\begin{align}
-	P_\textrm{Blocking} = P(\textrm{Drop a call because busy line})  \\
-	= \frac{A^N}{N!\sum^N_{i=0}(\frac{A^i}{i!})}
-\end{align}
+\begin{align*}
+	P_\textrm{Blocking} &= P(\textrm{Drop a call because busy line})  \\
+	&= \frac{A^N}{N!\sum^N_{i=0}(\frac{A^i}{i!})}
+\end{align*}
 
 Each channel carries the traffic 
 
@@ -102,23 +121,23 @@ $P_r(\textrm{dBm}) = P_0(\textrm{dBm})-10\alpha\log(\frac{d}{d_0})$ with $P_0$ t
 
 \subsection{Capacity of a cellular network}
 For $B_\textrm{t}$ the total allocated spectrum and $B_\textrm{c}$ the channel bandwidth: 
-\begin{align}
+\begin{align*}
 m = \frac{B_t}{B_c \frac{Q^2}{3}} = \frac{B_t}{B_c(\frac{6}{3^{\frac{\alpha}{2}}}(\frac{S}{I})_\textrm{min})^{\frac{2}{\alpha}}}
-\end{align}
+\end{align*}
 
 \subsection{CDMA Capacity: single cell case}
 For the bitrate $R$, available bandwidth $W$, noise spectral density $N_0$, thermal noise $\eta$, received user signal (at base station) $S$, we have a possible number $N$ of users:
-\begin{align}
+\begin{align*}
 	N = 1 + \frac{W/R}{E_b/N_0} - (\frac{\eta}{S})
-\end{align}
+\end{align*}
 
 \subsection{TODO: CDMA multiple cells ?}
 
 \section{Antennas \& Propagation}
 Free space propagation, received power: $P_\textrm{R} = P_\textrm{T}\frac{A_\textrm{R}}{4\pi d^2}\eta_\textrm{R}$ with $\eta_\textrm{R}$ an efficiency parameter, $A_\textrm{R}$ the receiving antenna area.
-
-Focusing capability, depends on size in wavelength: \\ $G_\textrm{T} = 4\pi\eta_\textrm{T}A_\textrm{T}/\lambda^2$
-
+\\
+Focusing capability, depends on size in wavelength $\lambda$:  
+\\$G_\textrm{T} = 4\pi\eta_\textrm{T}A_\textrm{T}/\lambda^2$ \\
 Directional emitter, received power: $P_\textrm{R} = P_\textrm{T}G_\textrm{T}\frac{A_\textrm{R}}{4\pi d^2}\eta_\textrm{R}$
 
 Free space received power: $P_\textrm{R} =  P_\textrm{T}G_\textrm{T}G_\textrm{R}(\frac{\lambda}{4\pi d})^2$
@@ -139,16 +158,27 @@ Horizon distance $d[\textrm{km}]$ in \textbf{kilometers}, antenna height $h[\tex
 \begin{description}
 \item[Optical LOS]: $d = 3.57\sqrt{h}$
 \item[Effective LOS]: $d = 3.57\sqrt{Kh}$
-\item[Max LOS distance for two antennas :] $3.57(\sqrt{Kh_1} \sqrt{Kh_2})$
+\item[Max LOS distance for two antennas :] $3.57(\sqrt{Kh_1}+ \sqrt{Kh_2})$
 \end{description}
 \section{Mobnet Decibels}
 $B = 10\log(\frac{P}{P_0})$
 
 \section{Noise}
+\paragraph{Thermal Noise}$N_0 = kT\quad(W/Hz)$
+
 For signal power $S$, bitrate $R$, $k$ the Boltzmann constant and $T$ the temperature: $\frac{E_b}{N_0} = \frac{S/R}{N_0} = \frac{S}{kTR}$
 
 \section{Free Space Loss}
-TODO PICKUP HERE
+%TODO PICKUP HERE
+Free space loss, ideal isotropic antenna:
+$$ \frac{P_t}{P_r} = \frac{(4\pi d)^2}{\lambda^2} = \frac{(4\pi fd)^2}{c^2} $$
+Free space loss equation can be recast:
+$$L_{DB} = 10\log \frac{P_t}{P_r} = 20 \log(f) +20\log(d) - 147.56 dB$$
+Free space loss accounting for gain of other antennas: 
+$$\frac{P_t}{P_r} = \frac{(4\pi d)^2}{G_rG_t\lambda^2} = \frac{(cd)^2}{f^2A_rA_t}$$
+$G_t$ = gain of transmitting antenna\\
+$A_r$ = effective area of receiving antenna
+
 \section{Wireless Security Requirements}
 
 \begin{multicols}{2}
