@@ -115,9 +115,12 @@ Each channel carries the traffic
 	\rho = \frac{(1 - P_\textrm{blocking})A}{N}
 \end{equation}
 
+\paragraph{Cellular efficiency} $E = \frac{Conversations}{cells\times MHz}$
+
 \section{Cellular Geometry: Hexagons}
 
-\textbf{Area}: $A=1.5R^2\sqrt{3}$, Distance btw. adjacent cells: $d=\sqrt{3}R$
+\textbf{Area}: $A=1.5R^2\sqrt{3}$\\
+\textbf{Distance btw. adjacent cells}: $d=\sqrt{3}R$
 
 \subsection{Co-channel interference}
 \begin{description}
@@ -137,7 +140,7 @@ $P_r(\textrm{dBm}) = P_0(\textrm{dBm})-10\alpha\log(\frac{d}{d_0})$ with $P_0$ t
 \subsection{Capacity of a cellular network}
 For $B_\textrm{t}$ the total allocated spectrum and $B_\textrm{c}$ the channel bandwidth: 
 \begin{align*}
-m = \frac{B_t}{B_c \frac{Q^2}{3}} = \frac{B_t}{B_c(\frac{6}{3^{\frac{\alpha}{2}}}(\frac{S}{I})_\textrm{min})^{\frac{2}{\alpha}}}
+m = \frac{B_t}{B_c \frac{Q^2}{3}} = \frac{B_t}{B_c\left(\frac{6}{3^{\frac{\alpha}{2}}}\left(\frac{S}{I}\right)_\textrm{min}\right)^{\frac{2}{\alpha}}}
 \end{align*}
 
 \subsection{CDMA Capacity: single cell case}
@@ -146,7 +149,12 @@ For the bitrate $R$, available bandwidth $W$, noise spectral density $N_0$, ther
 	N = 1 + \frac{W/R}{E_b/N_0} - (\frac{\eta}{S})
 \end{align*}
 
-\subsection{TODO: CDMA multiple cells ?}
+\subsection{CDMA multiple cells}
+\paragraph{Frequency reuse factor on the uplink} 
+$f = \frac{N_0}{N_0 + \sum_iU_iN_{ai}}$ where $N_0$ = total interference power received from $N-1$ in-cell users, $U_i$ = number of users in the$i^\text{th}$ adjacent cell and $N_{ai}$ = average interference power from a user located in the $i^\text{th}$ adjacent cell
+
+\paragraph{Average received power from users in adjacent cell}
+$N_{ai} = \sum_j N_{ij}/U_i$ where $N_{ij}$ = power received at the base station of interest from the $j^\text{th}$ user in the $i^\text{th}$ cell
 
 \section{Antennas \& Propagation}
 Free space propagation, received power: $P_\textrm{R} = P_\textrm{T}\frac{A_\textrm{R}}{4\pi d^2}\eta_\textrm{R}$ with $\eta_\textrm{R}$ an efficiency parameter, $A_\textrm{R}$ the receiving antenna area.
