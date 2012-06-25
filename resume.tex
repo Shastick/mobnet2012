@@ -13,49 +13,6 @@
 
 \begin{document}
 
-\section{Channel Capacity}
-
-\subsection{ALOHA}
-\begin{equation}
-P(k \text{ transm. in } 2X\text s) = \frac{(2G)^k}{k!} e^{-2G}
-\end{equation}
-
-\begin{equation}
-S = G \cdot P(0) = Ge^{-2G}
-\end{equation}
-
-\subsection{Slotted ALOHA} 
-%C'est pas slotted alpha ça? 
-Probability of $k$ packets generated during a slot:
-
-\begin{equation}
-P(k) = \frac{G^ke^{-G}}{k!}
-\end{equation}
-
-Throughput:
-
-\begin{equation}
-P(1) = Ge^{-G}
-\end{equation}
-
-\subsection{CSMA}
-\paragraph{Non-persistent} If channel is busy, directly run back off algorithm
-\paragraph{p-persistent} If it is busy, they persist with sensing until the channel becomes idle. If it is idle:\\- With probability $p$, the station transmits its packet\\- With probability $1-p$, the station waits for a random time and senses again
-
-%Include slide 26 of A2 (throughput expressions)? 
-\section{WLAN}
-
-\section{DOMINO}
-\begin{tabular}{|p{4cm}|p{5.2cm}|}
-  \hline
-  Cheating Method & Detection Test \\\hline
-  Frame scrambling & Number of retransmissions \\
-  Oversized NAV1 & Comparison of the declared and actual NAV values\\
-  Transmission before DIFS & Comparison of the idle time after the last ACK with DIFS \\
-  Backoff manipulation & Actual Backoff/ Consecutive Backoff \\
-  Frame scrambling with MAC forging & Periodic dummy frame injection\\
-   \hline
-\end{tabular}
 \section{Bianchi}
 
 \subsection{probabilities}
@@ -156,21 +113,6 @@ $f = \frac{N_0}{N_0 + \sum_iU_iN_{ai}}$ where $N_0$ = total interference power r
 \paragraph{Average received power from users in adjacent cell}
 $N_{ai} = \sum_j N_{ij}/U_i$ where $N_{ij}$ = power received at the base station of interest from the $j^\text{th}$ user in the $i^\text{th}$ cell
 
-\section{Antennas \& Propagation}
-Free space propagation, received power: $P_\textrm{R} = P_\textrm{T}\frac{A_\textrm{R}}{4\pi d^2}\eta_\textrm{R}$ with $\eta_\textrm{R}$ an efficiency parameter, $A_\textrm{R}$ the receiving antenna area.
-\\
-Focusing capability, depends on size in wavelength $\lambda$:  
-\\$G_\textrm{T} = 4\pi\eta_\textrm{T}A_\textrm{T}/\lambda^2$ \\
-Directional emitter, received power: $P_\textrm{R} = P_\textrm{T}G_\textrm{T}\frac{A_\textrm{R}}{4\pi d^2}\eta_\textrm{R}$
-
-Free space received power: $P_\textrm{R} =  P_\textrm{T}G_\textrm{T}G_\textrm{R}(\frac{\lambda}{4\pi d})^2$
-
-Loss: $L = \frac{P_T}{P_R} = \frac{(4\pi d)^2}{G_RG_T\lambda^2} $
-
-$ c = 3 \cdot 10^8 $
-
-Parabola: $G = \frac{7A}{\lambda^2}$
-
 \subsection{Propagation modes}
 \begin{multicols}{2}
 	\begin{description}
@@ -187,15 +129,34 @@ Horizon distance $d[\textrm{km}]$ in \textbf{kilometers}, antenna height $h[\tex
 \item[Effective LOS]: $d = 3.57\sqrt{Kh}$
 \item[Max LOS distance for two antennas :] $3.57(\sqrt{Kh_1}+ \sqrt{Kh_2})$
 \end{description}
-\section{Mobnet Decibels}
-$B = 10\log(\frac{P}{P_0})$
 
 \section{Noise}
 \paragraph{Thermal Noise}$N_0 = kT\quad(W/Hz)$
 
 For signal power $S$, bitrate $R$, $k = 1.3806\cdot10^{-23} JK^{-1}$ the Boltzmann constant and $T$ the temperature: $\frac{E_b}{N_0} = \frac{S/R}{N_0} = \frac{S}{kTR}$
 
-\section{Free Space Loss}
+%Include slide 26 of A2 (throughput expressions)? 
+\section{Wireless Misc Stuff}
+\underline{Security Requirements}:
+\textbf{Confidentiality, Authenticity, Replay Detection, Integrity, Access Control,Jamming Protection}
+\subsection{Antennas \& Propagation}
+Free space propagation, received power: $P_\textrm{R} = P_\textrm{T}\frac{A_\textrm{R}}{4\pi d^2}\eta_\textrm{R}$ with $\eta_\textrm{R}$ an efficiency parameter, $A_\textrm{R}$ the receiving antenna area.
+\\
+Focusing capability, depends on size in wavelength $\lambda$:  
+\\$G_\textrm{T} = 4\pi\eta_\textrm{T}A_\textrm{T}/\lambda^2$ \\
+Directional emitter, received power: $P_\textrm{R} = P_\textrm{T}G_\textrm{T}\frac{A_\textrm{R}}{4\pi d^2}\eta_\textrm{R}$
+
+Free space received power: $P_\textrm{R} =  P_\textrm{T}G_\textrm{T}G_\textrm{R}(\frac{\lambda}{4\pi d})^2$
+
+Loss: $L = \frac{P_T}{P_R} = \frac{(4\pi d)^2}{G_RG_T\lambda^2} $
+
+$ c = 3 \cdot 10^8 $
+
+Parabola: $G = \frac{7A}{\lambda^2}$
+
+\underline{\textbf{Mobnet Decibels}}:
+$B = 10\log(\frac{P}{P_0})$
+\subsection{Free Space Loss}
 %TODO PICKUP HERE
 Free space loss, ideal isotropic antenna:
 $$ \frac{P_t}{P_r} = \frac{(4\pi d)^2}{\lambda^2} = \frac{(4\pi fd)^2}{c^2} $$
@@ -206,18 +167,49 @@ $$\frac{P_t}{P_r} = \frac{(4\pi d)^2}{G_rG_t\lambda^2} = \frac{(cd)^2}{f^2A_rA_t
 $G_t$ = gain of transmitting antenna\\
 $A_r$ = effective area of receiving antenna
 
-\section{Wireless Security Requirements}
+\subsection{Channel Capacity}
 
-\begin{multicols}{2}
-	\begin{description}
-		\item[Confidentiality]
-		\item[Authenticity]
-		\item[Replay Detection]
-		\item[Integrity]
-		\item[Access Control]
-		\item[Jamming Protection]
-	\end{description}
-\end{multicols}
+\subsubsection{ALOHA}
+\begin{equation}
+P(k \text{ transm. in } 2X\text s) = \frac{(2G)^k}{k!} e^{-2G}
+\end{equation}
+
+\begin{equation}
+S = G \cdot P(0) = Ge^{-2G}
+\end{equation}
+
+\subsubsection{Slotted ALOHA} 
+%C'est pas slotted alpha ça? 
+Probability of $k$ packets generated during a slot:
+
+\begin{equation}
+P(k) = \frac{G^ke^{-G}}{k!}
+\end{equation}
+
+Throughput:
+
+\begin{equation}
+P(1) = Ge^{-G}
+\end{equation}
+
+\subsubsection{CSMA}
+\paragraph{Non-persistent} If channel is busy, directly run back off algorithm
+\paragraph{p-persistent} If it is busy, they persist with sensing until the channel becomes idle. If it is idle:\\
+- With probability $p$, the station transmits its packet\\
+- With probability $1-p$, the station waits for a random time and senses again
+
+\subsection{DOMINO Cheating detection}
+\begin{tabular}{|p{4cm}|p{5.2cm}|}
+  \hline
+  Cheating Method & Detection Test \\\hline
+  Frame scrambling & Number of retransmissions \\
+  Oversized NAV1 & Comparison of the declared and actual NAV values\\
+  Transmission before DIFS & Comparison of the idle time after the last ACK with DIFS \\
+  Backoff manipulation & Actual Backoff/ Consecutive Backoff \\
+  Frame scrambling with MAC forging & Periodic dummy frame injection\\
+   \hline
+\end{tabular}
+
 \end{document}
 
 
