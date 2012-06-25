@@ -1,4 +1,4 @@
-\documentclass[11pt, a4paper,twocolumn]{scrartcl}
+\documentclass[10pt, a4paper,twocolumn]{scrartcl}
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{multicol}
@@ -59,10 +59,16 @@ P(1) = Ge^{-G}
 \section{Bianchi}
 
 \subsection{probabilities}
-$\pi$, probability of transmission, $p$, probability of collision:
+$\pi$, probability of transmission, $p$, probability of collision,
+$b_{i,k}$ stationary probability of state $i,k$:
 \begin{align*}
 p &= 1-(1-\pi)^{N-1} \\
-\pi &= \frac{2}{ 1 + W_\textrm{min} + pW_\textrm{min}\sum^{m-1}_{k=0}(2p)^k}
+\pi &= \frac{2}{ 1 + W_\textrm{min} + pW_\textrm{min}\sum^{m-1}_{k=0}(2p)^k}\\
+b_{i,k} &= \frac{CW_i - k}{CW_i} \cdot \left \{ \begin{array}{ll}
+    (1-p) \sum_{j=0}^m b_{j,0} & i = 0\\
+    p \cdot b_{i-1,0} & 0 < i < m\\
+    p \cdot (b_{m-1,0} + b_{m,0}) & i = m
+    \end{array} \right.
 \end{align*}
 
 \subsection{Saturation throughput}
