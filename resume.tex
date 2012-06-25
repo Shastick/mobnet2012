@@ -15,7 +15,16 @@
 
 \section{Channel Capacity}
 
-\subsection{ALOHA} 
+\subsection{ALOHA}
+\begin{equation}
+P(k \text{ transm. in } 2X\text s) = \frac{(2G)^k}{k!} e^{-2G}
+\end{equation}
+
+\begin{equation}
+S = G \cdot P(0) = Ge^{-2G}
+\end{equation}
+
+\subsection{Slotted ALOHA} 
 %C'est pas slotted alpha ça? 
 Probability of $k$ packets generated during a slot:
 
@@ -144,6 +153,10 @@ Free space received power: $P_\textrm{R} =  P_\textrm{T}G_\textrm{T}G_\textrm{R}
 
 Loss: $L = \frac{P_T}{P_R} = \frac{(4\pi d)^2}{G_RG_T\lambda^2} $
 
+$ c = 3 \cdot 10^8 $
+
+Parabola: $G = \frac{7A}{\lambda^2}$
+
 \subsection{Propagation modes}
 \begin{multicols}{2}
 	\begin{description}
@@ -166,7 +179,7 @@ $B = 10\log(\frac{P}{P_0})$
 \section{Noise}
 \paragraph{Thermal Noise}$N_0 = kT\quad(W/Hz)$
 
-For signal power $S$, bitrate $R$, $k$ the Boltzmann constant and $T$ the temperature: $\frac{E_b}{N_0} = \frac{S/R}{N_0} = \frac{S}{kTR}$
+For signal power $S$, bitrate $R$, $k = 1.3806\cdot10^{-23} JK^{-1}$ the Boltzmann constant and $T$ the temperature: $\frac{E_b}{N_0} = \frac{S/R}{N_0} = \frac{S}{kTR}$
 
 \section{Free Space Loss}
 %TODO PICKUP HERE
