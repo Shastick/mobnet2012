@@ -98,7 +98,7 @@ $P_r(\textrm{dBm}) = P_0(\textrm{dBm})-10\alpha\log(\frac{d}{d_0})$ with $P_0$ t
 	
 \item[SIR in the corner of a cell]: $\frac{S}{I} = \frac{R^{-\alpha}}{\sum^{i_0}_{i=1}D_i^{-\alpha}}$
 
-\item[First interfering layer approximation]: $\frac{S}{I} = \frac{(\frac{D}{R})^\alpha}{i_0} = \frac{(\sqrt{3N})^\alpha}{i_0}$
+\item[First interfering layer approximation]: $\frac{S}{I} = \frac{(\frac{D}{R})^\alpha}{i_0} = \frac{(\sqrt{3N})^\alpha}{i_0}$ eg. $=(\frac{D}{R})^2\frac{1}{2}$ in the 2010 case.
 
 \end{description}
 
@@ -107,6 +107,7 @@ For $B_\textrm{t}$ the total allocated spectrum and $B_\textrm{c}$ the channel b
 \begin{align*}
 m = \frac{B_t}{B_c \frac{Q^2}{3}} = \frac{B_t}{B_c\left(\frac{6}{3^{\frac{\alpha}{2}}}\left(\frac{S}{I}\right)_\textrm{min}\right)^{\frac{2}{\alpha}}}
 \end{align*}
+For a cluster size $N$, $N = (i + j)^2 - ij$ for $i,j=0,1,2,\ldots$
 
 \subsection{CDMA Capacity: single cell case}
 For the bitrate $R$, available bandwidth $W$, noise spectral density $N_0$, thermal noise $\eta$, received user signal (at base station) $S$, we have a possible number $N$ of users:
