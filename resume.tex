@@ -89,7 +89,7 @@ Each channel carries the traffic
 \begin{description}
 \item[Co-channel reuse ratio]: $Q = \frac{D}{R} = \sqrt{3N}$ with $D$ the \textbf{distance} to the nearest co-channel cell, $R$ the \textbf{radius} of a cell and $N$ the \textbf{cluster size}.
 
-\item[Signal to Interference ratio (SIR)]: $\textrm{SIR} = \frac{S}{I} = \frac{S}{\sum{i_0}_{i=1}I_i}$. With $S$ the desired signal \textbf{power}, $I_i$ the \textbf{interference power} from the $i$th interfering co-channel base-station, $i_0$ the \textbf{number of co-channel} interfering cells.
+\item[Signal to Interference ratio (SIR)]: $\textrm{SIR} = \frac{S}{I} = \frac{S}{\sum^{i_0}_{i=1}I_i}$. With $S$ the desired signal \textbf{power}, $I_i$ the \textbf{interference power} from the $i$th interfering co-channel base-station, $i_0$ the \textbf{number of co-channel} interfering cells.
 
 \item[Signal to Interference plus Noise ratio (SINR)] : SINR $= \frac{S}{I + N_0}$
 
@@ -98,7 +98,7 @@ $P_r(\textrm{dBm}) = P_0(\textrm{dBm})-10\alpha\log(\frac{d}{d_0})$ with $P_0$ t
 	
 \item[SIR in the corner of a cell]: $\frac{S}{I} = \frac{R^{-\alpha}}{\sum^{i_0}_{i=1}D_i^{-\alpha}}$
 
-\item[First interfering layer approximation]: $\frac{S}{I} = \frac{(\frac{D}{R})^\alpha}{i_0} = \frac{(\sqrt{3N})^\alpha}{i_0}$ eg. $=(\frac{D}{R})^2\frac{1}{2}$ in the 2010 case.
+\item[First interfering layer approximation]: $\frac{S}{I} = \frac{(\frac{D}{R})^\alpha}{i_0} = \frac{(\sqrt{3N})^\alpha}{i_0}$ eg. $=(\frac{D}{R})^2\frac{1}{2}$ for two first layer interferers (cell divided into 3 sectors with directional antennas.)
 
 \end{description}
 
