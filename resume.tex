@@ -2,6 +2,7 @@
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{multicol}
+\usepackage{graphicx}
 
 \topmargin=-0.9in      %
 \evensidemargin=-0.8in     %
@@ -15,6 +16,8 @@
 \setlength{\parindent}{0cm}
 \setlength{\parskip}{0ex plus 0.5ex minus 0.2ex}
 \pagestyle{empty} 
+
+
 
 \begin{document}
 
@@ -44,11 +47,6 @@ b_{i,k} &= \frac{CW_i - k}{CW_i} \cdot \left \{ \begin{array}{ll}
  T_\textrm{s} &= t_\textrm{header} + t_\textrm{payload} + \textrm{SIFS} + t_\textrm{ACK} + \textrm{DIFS} + \sigma,\\
  T_\textrm{c} &= t_\textrm{header} + t_\textrm{payload} + \textrm{SIFS} + \sigma
 \end{align*}
-
-TODO : Times, and the Bianchi model's equation.
-
-\section{TODO: RFID STUFF}
-See exam 2010  ex 7 for an example.
 
 \section{Trunk dimensioning}
 For a trunk of $N$ channels, an offered load $A=\lambda E[X]$, $X$ the call duration, $Y$ the call arrival per sec $\sim$ Poisson($\lambda$) 
@@ -270,7 +268,20 @@ $I_1,I_2$, sets of elements to be related, $p_r$, the probability two elements a
 	\sum_{\forall R \subseteq I_1 \times I_2}p_r \log(p_r)
 \end{equation*}
 
+\subsection{RFID}
+\paragraph{Singulation} (determining which tags are present around the reader) Binary tree walking: reader first asks the tags to emit the first bit of their ID. If every answer is 0 (or 1) the reader knows on which side the ID's are. This is done recursively until all ID's are determined.
 
+\paragraph{Privacy zone} A tag ID can be changed so that it lies in the \emph{private} zone of the tree. A special device simulates collisions for every query in this area, so an exhaustive search would be required to find a tag. 
+
+\paragraph{Pseudonyms} Tags can be set to use different ID's that an authorized reader would know how to correlate. To avoid having too complex tags, the reader will generally be responsible for \emph{refilling} the pseudonyms. This will be done in cleartext and assumes an attacker does not always listen.
+
+\subsubsection{Key Tree}
+Tags are the leaves of a tree with branching factor $b$ and depth $d$, and each edge to arrive to a tag has an associated key: hence, a tag has $d$ associated keys.
+
+\paragraph{Anonymity set} has minimum size of 1, maximum size of all the tags. Compromising a tag yields all the keys leading to it and permit to partition the other tags (neighbors in the tree share common keys) : $P_0$ contains the compromised tag, $P_1$ contains the tags whose parent is the same as the compromised tag and that is not in $P_0$, etc.
+\begin{center}
+\includegraphics[width=0.7\columnwidth]{img/anon_set.png}
+\end{center}
 \end{document}
 
 
