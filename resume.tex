@@ -115,7 +115,11 @@ For the bitrate $R$, available bandwidth $W$, noise spectral density $N_0$, ther
 \begin{align*}
 	N = 1 + \frac{W/R}{E_b/N_0} - (\frac{\eta}{S})
 \end{align*}
-
+With a duty cycle $\delta$ (Discontinuous transmission mode: takes advantage ofintermittent nature of speech):
+\begin{align*}
+	N = 1 + \frac1\delta\frac{W/R}{E_b/N_0} - (\frac{\eta}{S})
+\end{align*}
+And if we have $m$ sectors, the effective capacity becomes $mN$
 \subsection{CDMA multiple cells}
 \paragraph{Frequency reuse factor on the uplink} 
 $f = \frac{N_0}{N_0 + \sum_iU_iN_{ai}}$ where $N_0$ = total interference power received from $N-1$ in-cell users, $U_i$ = number of users in the$i^\text{th}$ adjacent cell and $N_{ai}$ = average interference power from a user located in the $i^\text{th}$ adjacent cell
