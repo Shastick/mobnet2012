@@ -1,20 +1,13 @@
-\documentclass[10pt, a4paper,twocolumn]{scrartcl}
+\documentclass[7pt,a4]{scrartcl}
+\usepackage[landscape,margin=20pt]{geometry}
+
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{multicol}
 \usepackage{graphicx}
 
-\paperwidth = 597pt
-\paperheight = 845pt
 
-\textwidth=0.95\paperwidth        %
-\textheight=0.95\paperheight      %
 
-\topmargin=-1in      %
-\evensidemargin=-0.8in     %
-\oddsidemargin=-0.8in      %
-
-\headsep=0.1in         %
 
 %Commands to format and shorten
 \setlength{\columnseprule}{0.2pt}
@@ -25,7 +18,7 @@
 
 
 \begin{document}
-
+\begin{multicols}{4}
 \section{Bianchi}
 
 \subsection{probabilities}
@@ -216,7 +209,7 @@ P(1) = Ge^{-G}
 - With probability $1-p$, the station waits for a random time and senses again
 
 \subsection{DOMINO Cheating detection}
-\begin{tabular}{|p{4cm}|p{5.2cm}|}
+\begin{tabular}{|p{0.35\columnwidth}|p{0.55\columnwidth}|}
   \hline
   Cheating Method & Detection Test \\\hline
   Frame scrambling & Number of retransmissions \\
@@ -307,6 +300,8 @@ For \textbf{one} tag in $P_i$, the linkability probability is  $1/|P_i| \rightar
 \frac1n\sum_{i=1}^l(|P_i|\frac1{|P_i|}) = \frac ln
 \end{equation*}
 With $n = b^d$
+
+\end{multicols}
 \end{document}
 
 
