@@ -4,11 +4,16 @@
 \usepackage{multicol}
 \usepackage{graphicx}
 
-\topmargin=-0.9in      %
+\paperwidth = 597pt
+\paperheight = 845pt
+
+\textwidth=0.95\paperwidth        %
+\textheight=0.95\paperheight      %
+
+\topmargin=-1in      %
 \evensidemargin=-0.8in     %
 \oddsidemargin=-0.8in      %
-\textwidth=8in        %
-\textheight=10.7in       %
+
 \headsep=0.1in         %
 
 %Commands to format and shorten
@@ -92,7 +97,7 @@ m = \frac{B_t}{B_c \frac{Q^2}{3}} = \frac{B_t}{B_c\left(\frac{6}{3^{\frac{\alpha
 \end{align*}
 For a cluster size $N$, $N = (i + j)^2 - ij$ for $i,j=0,1,2,\ldots$ and number of channels $C$ we have $m=\lfloor\frac CN\rfloor$
 
-\subsection{CDMA Capacity: single cell case}
+\subsubsection{CDMA Capacity: single cell case}
 For the bitrate $R$, available bandwidth $W$, noise spectral density $N_0$, thermal noise $\eta$, received user signal (at base station) $S$, we have a possible number $N$ of users:
 \begin{align*}
 	N = 1 + \frac{W/R}{E_b/N_0} - (\frac{\eta}{S})
@@ -103,7 +108,7 @@ intermittent nature of speech):
 	N = 1 + \frac1\delta\frac{W/R}{E_b/N_0} - (\frac{\eta}{S})
 \end{align*}
 And if we have $m$ sectors, the effective capacity becomes $mN$
-\subsection{CDMA multiple cells}
+\subsubsection{CDMA multiple cells}
 \paragraph{Frequency reuse factor on the uplink} 
 $f = \frac{N_0}{N_0 + \sum_iU_iN_{ai}}$ where $N_0$ = total interference power received from $N-1$ in-cell users, $U_i$ = number of users in the$i^\text{th}$ adjacent cell and $N_{ai}$ = average interference power from a user located in the $i^\text{th}$ adjacent cell
 
