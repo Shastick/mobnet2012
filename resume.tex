@@ -132,6 +132,10 @@ For signal power $S$, bitrate $R$, $k = 1.3806\cdot10^{-23} JK^{-1}$ the Boltzma
 
 %Include slide 26 of A2 (throughput expressions)? 
 \section{Wireless Misc Stuff}
+
+\paragraph{Network Layers} Top-down: Application, Transport, Network, Data-link, Physical.
+
+
 \underline{Security Requirements}:
 \textbf{Confidentiality, Authenticity, Replay Detection, Integrity, Access Control,Jamming Protection}
 
@@ -168,17 +172,8 @@ $$\frac{P_t}{P_r} = \frac{(4\pi d)^2}{G_rG_t\lambda^2} = \frac{(cd)^2}{f^2A_rA_t
 $G_t$ = gain of transmitting antenna\\
 $A_r$ = effective area of receiving antenna
 
-\section{Ad-hoc Netowrks} %D3 - slide 48
-\paragraph{Upper Bound for the Throughput} 
-f we have $n$ identical randomly located nodes each capable of transmitting $W$ bits/s. 
-Then the throughput $\lambda(n)$ obtainable by each node for a randomly chosen destination is $\lambda(n) = \Theta\left(\frac W{\sqrt{n\log n}}\right)$
-
-
-\section{Wireless Misc Stuff}
-\underline{Security Requirements}:
-\textbf{Confidentiality, Authenticity, Replay Detection, Integrity, Access Control,Jamming Protection}
-
-
+\subsection{Protocol performances}
+$G$: Total load, $S$ arrival rate of new packets. 
 \subsubsection{ALOHA}
 \begin{equation*}
 P(k \text{ transm. in } 2X\text s) = \frac{(2G)^k}{k!} e^{-2G}
