@@ -75,9 +75,9 @@ For a trunk of $N$ channels, an offered load $A=\lambda E[X]$, $X$ the call dura
 
 Each channel carries the traffic 
 
-\begin{equation}
+\begin{equation*}
 	\rho = \frac{(1 - P_\textrm{blocking})A}{N}
-\end{equation}
+\end{equation*}
 
 \paragraph{Cellular efficiency} $E = \frac{Conversations}{cells\times MHz}$
 
@@ -115,7 +115,8 @@ For the bitrate $R$, available bandwidth $W$, noise spectral density $N_0$, ther
 \begin{align*}
 	N = 1 + \frac{W/R}{E_b/N_0} - (\frac{\eta}{S})
 \end{align*}
-With a duty cycle $\delta$ (Discontinuous transmission mode: takes advantage ofintermittent nature of speech):
+With a duty cycle $\delta$ (Discontinuous transmission mode: takes advantage of
+intermittent nature of speech):
 \begin{align*}
 	N = 1 + \frac1\delta\frac{W/R}{E_b/N_0} - (\frac{\eta}{S})
 \end{align*}
@@ -199,27 +200,27 @@ Then the throughput $\lambda(n)$ obtainable by each node for a randomly chosen d
 
 
 \subsubsection{ALOHA}
-\begin{equation}
+\begin{equation*}
 P(k \text{ transm. in } 2X\text s) = \frac{(2G)^k}{k!} e^{-2G}
-\end{equation}
+\end{equation*}
 
-\begin{equation}
+\begin{equation*}
 S = G \cdot P(0) = Ge^{-2G}
-\end{equation}
+\end{equation*}
 
 \subsubsection{Slotted ALOHA} 
 %C'est pas slotted alpha ça? 
 Probability of $k$ packets generated during a slot:
 
-\begin{equation}
+\begin{equation*}
 P(k) = \frac{G^ke^{-G}}{k!}
-\end{equation}
+\end{equation*}
 
 Throughput:
 
-\begin{equation}
+\begin{equation*}
 P(1) = Ge^{-G}
-\end{equation}
+\end{equation*}
 
 \subsubsection{CSMA}
 \paragraph{Non-persistent} If channel is busy, directly run back off algorithm
