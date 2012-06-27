@@ -1,12 +1,13 @@
-\documentclass[7pt,a4]{scrartcl}
+\documentclass[7pt]{scrartcl}
 \usepackage[landscape,margin=20pt]{geometry}
 
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{multicol}
 \usepackage{graphicx}
+\usepackage{setspace}
 
-
+\graphicspath{{img/}}
 
 
 %Commands to format and shorten
@@ -282,7 +283,7 @@ $I_1,I_2$, sets of elements to be related, $p_r$, the probability two elements a
 \subsubsection{Key Tree}
 Tags are the leaves of a tree with branching factor $b$ and depth $d$, and each edge to arrive to a tag has an associated key: hence, a tag has $d$ associated keys.
 \begin{center}
-\includegraphics[width=0.7\columnwidth]{img/anon_set}
+\includegraphics[width=0.7\columnwidth]{anon_set}
 \end{center}
 
 \paragraph{Anonymity set} has minimum size of 1, maximum size of all the tags. Compromising a tag yields all the keys leading to it and permit to partition the other tags (neighbors in the tree share common keys) : $P_0$ contains the compromised tag, $P_1$ contains the compromised tag's \emph{brothers} not being in $P_0$, etc. Tags that belong to larger partitions have better privacy (e.g: tags in $P_3$ are not distinguishable, attacker only knows they don't use $k_1$.)
@@ -299,14 +300,16 @@ Using $n = b^d$ and $|P_0| = 1, |P_1| = b-1, |P_2| = (b-1)b, \ldots, |P_l| = (b-
 	\frac{\bar{S}}n = \sum_{i=0}^d \frac {|P_i|^2}{n^2} = \frac{b-1}{b+1} + \frac2{(b+1)n^2}
 \end{equation*}
 
-For \textbf{one} tag in $P_i$, the linkability probability is  $1/|P_i| \rightarrow$ global linkability in $P_i$ is $|P_i|\frac1{|P_i|} = 1$. For $l$ partitions, the probability that two transactions from a randomly chosen tag are linkable is:
+For \textbf{one} tag in $P_i$, the linkability probability is  $1/|P_i| \rightarrow$ global linkability in $P_i$ is $|P_i|\frac1{|P_i|} = 1$. For $l$ partitions, the probability that two transactions from a randomly chosen tag are linkable is (with $n = b^d$):
 
 \begin{equation*}
 \frac1n\sum_{i=1}^l(|P_i|\frac1{|P_i|}) = \frac ln
 \end{equation*}
-With $n = b^d$
 
+\section{Comparisons}
+\includegraphics[height=\columnwidth, angle=270]{comparatif}
 \end{multicols}
+\input{Acronymes}
 \end{document}
 
 
