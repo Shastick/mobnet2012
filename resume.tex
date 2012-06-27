@@ -8,6 +8,15 @@
 \usepackage{setspace}
 \usepackage[compact]{titlesec}
 
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks,%
+    citecolor=black,%
+    filecolor=black,%
+    linkcolor=black,%
+    urlcolor=black
+}
+
 \graphicspath{{img/}}
 
 
@@ -249,7 +258,7 @@ Redundancy in packets to allow limited error correction at the receiver: used in
 \section{Security}
 \paragraph{Security Requirements}: Confidentiality, Authenticity, Replay Detection, Integrity, Access Control, Jamming Protection.
 \paragraph{GSM} Shared secret and challenge responses, one-way authentication.
-\paragraph{3GPP} Two-way authentication.
+\paragraph{3GPP} (Improvements from GSM) Two-way authentication, avoid fake base station, cipher keys and auth data is now encrypted, integrity. Privacy/Anonymity not completely protected however.
 
 \section{Privacy}
 \paragraph{Privacy Related Notions}Anonymity, untraceability, unlinkeability, unobservability, pseudonymity
@@ -273,6 +282,8 @@ $I_1,I_2$, sets of elements to be related, $p_r$, the probability two elements a
 \end{equation*}
 
 \subsection{RFID}
+\paragraph{Standard tags possibilities}: Kill, Sleep, Rename, Block, (Legislation).
+\paragraph{Crypto enable tags possibilities}: Tree-approach, synchronization approach, hash chain based approach.
 \paragraph{Singulation} (determining which tags are present around the reader) Binary tree walking: reader first asks the tags to emit the first bit of their ID. If every answer is 0 (or 1) the reader knows on which side the ID's are. This is done recursively until all ID's are determined.
 
 \paragraph{Privacy zone} A tag ID can be changed so that it lies in the \emph{private} zone of the tree. A special device simulates collisions for every query in this area, so an exhaustive search would be required to find a tag. 
@@ -280,7 +291,7 @@ $I_1,I_2$, sets of elements to be related, $p_r$, the probability two elements a
 \paragraph{Pseudonyms} Tags can be set to use different ID's that an authorized reader would know how to correlate. To avoid having too complex tags, the reader will generally be responsible for \emph{refilling} the pseudonyms. This will be done in cleartext and assumes an attacker does not always listen.
 
 \subsubsection{Key Tree}
-Tags are the leaves of a tree with branching factor $b$ and depth $d$, and each edge to arrive to a tag has an associated key: hence, a tag has $d$ associated keys.
+Tags are the leaves of a tree with branching factor $b$ and depth $d$, and each edge to arrive to a tag has an associated key: hence, a tag has $d$ associated keys. Maximize branching factor at the first level for strong anonymity.
 \begin{center}
 \includegraphics[width=0.7\columnwidth]{anon_set}
 \end{center}
@@ -296,7 +307,7 @@ Tags are the leaves of a tree with branching factor $b$ and depth $d$, and each 
 \paragraph{Normalized expected anonymity} : 
 Using $n = b^d$ and $|P_0| = 1, |P_1| = b-1, |P_2| = (b-1)b, \ldots, |P_l| = (b-1)b^{l-1}$.
 \begin{equation*}
-	\frac{\bar{S}}n = \sum_{i=0}^d \frac {|P_i|^2}{n^2} = \frac{b-1}{b+1} + \frac2{(b+1)n^2}
+	R = \frac{\bar{S}}n = \sum_{i=0}^d \frac {|P_i|^2}{n^2} = \frac{b-1}{b+1} + \frac2{(b+1)n^2}
 \end{equation*}
 
 For \textbf{one} tag in $P_i$, the linkability probability is  $1/|P_i| \rightarrow$ global linkability in $P_i$ is $|P_i|\frac1{|P_i|} = 1$. For $l$ partitions, the probability that two transactions from a randomly chosen tag are linkable is (with $n = b^d$):
@@ -308,7 +319,7 @@ For \textbf{one} tag in $P_i$, the linkability probability is  $1/|P_i| \rightar
 \section{Comparisons}
 \includegraphics[height=\columnwidth, angle=270]{comparatif}
 \begin{center}
-This amazing cheat-sheet was brought to you by \emph{Julien Perrochet}, \emph{Christopher Chiche} and \emph{Tobias Schlatter}.
+This amazing cheat-sheet was brought to you by \emph{Julien Perrochet}, \emph{Christopher Chiche} and \emph{Tobias Schlatter}. Follow us on GitHub: \url{https://github.com/Shastick/mobnet2012} !
 \end{center}
 \end{multicols}
 \vspace{-7pt}
