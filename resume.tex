@@ -6,6 +6,7 @@
 \usepackage{multicol}
 \usepackage{graphicx}
 \usepackage{setspace}
+\usepackage[compact]{titlesec}
 
 \graphicspath{{img/}}
 
@@ -13,7 +14,8 @@
 %Commands to format and shorten
 \setlength{\columnseprule}{0.2pt}
 \setlength{\parindent}{0cm}
-\setlength{\parskip}{-0.3em plus 0.2em}%plus 0.1ex minus 0.2ex}
+\setlength{\parskip}{0em plus 0.2em minus 0.2em}%plus 0.1ex minus 0.2ex}
+
 \pagestyle{empty} 
 
 
@@ -112,14 +114,16 @@ $N_{ai} = \sum_j N_{ij}/U_i$ where $N_{ij}$ = power received at the base station
 For signal power $S$, bitrate $R$, $k = 1.3806\cdot10^{-23} JK^{-1}$ the Boltzmann constant and $T$ the temperature: $\frac{E_b}{N_0} = \frac{S/R}{N_0} = \frac{S}{kTR}$
 
 \section{Wireless Misc Stuff}
-\paragraph{Mobility Requirements}
+\includegraphics[width=\columnwidth]{frequencies}
+
+\paragraph{Mobile IP Requirements}:
 Transparency, Compatibility, Security, Efficiency, Scalability.
+
+\paragraph{Mobile IP Issues}: Security(Authentication to FA is problematic), Firewalls, QoS
 
 \paragraph{Network Layers} Top-down: Application, Transport, Network, Data-link, Physical.
 
-
-\underline{Security Requirements}:
-\textbf{Confidentiality, Authenticity, Replay Detection, Integrity, Access Control,Jamming Protection}
+\paragraph{Security Requirements}: Confidentiality, Authenticity, Replay Detection, Integrity, Access Control,Jamming Protection.
 
 \subsection{Ad-hoc Netowrks} %D3 - slide 48
 \paragraph{Upper Bound for the Throughput} 
