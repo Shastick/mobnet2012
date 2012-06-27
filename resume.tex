@@ -14,7 +14,7 @@
 %Commands to format and shorten
 \setlength{\columnseprule}{0.2pt}
 \setlength{\parindent}{0cm}
-\setlength{\parskip}{0ex plus 0.5ex minus 0.2ex}
+\setlength{\parskip}{-0.5em plus 0.2em}%plus 0.1ex minus 0.2ex}
 \pagestyle{empty} 
 
 
@@ -278,11 +278,11 @@ $I_1,I_2$, sets of elements to be related, $p_r$, the probability two elements a
 
 \subsubsection{Key Tree}
 Tags are the leaves of a tree with branching factor $b$ and depth $d$, and each edge to arrive to a tag has an associated key: hence, a tag has $d$ associated keys.
-
-\paragraph{Anonymity set} has minimum size of 1, maximum size of all the tags. Compromising a tag yields all the keys leading to it and permit to partition the other tags (neighbors in the tree share common keys) : $P_0$ contains the compromised tag, $P_1$ contains the tags whose parent is the same as the compromised tag and that is not in $P_0$, etc.
 \begin{center}
 \includegraphics[width=0.7\columnwidth]{img/anon_set.png}
 \end{center}
+
+\paragraph{Anonymity set} has minimum size of 1, maximum size of all the tags. Compromising a tag yields all the keys leading to it and permit to partition the other tags (neighbors in the tree share common keys) : $P_0$ contains the compromised tag, $P_1$ contains the compromised tag's \emph{brothers} not being in $P_0$, etc.
 \end{document}
 
 
