@@ -51,15 +51,15 @@ TODO : Times, and the Bianchi model's equation.
 
 \subsection{Entropy-Based Anonymity}
 $A$ the anonymity set, $p_x$ the probability for an external observer that the action was performed by $x$:
-\begin{equation}
+\begin{equation*}
 	\sum_{\forall x \in A} p_x \log(p_x)
-\end{equation}
+\end{equation*}
 
 \subsection{Entropy-Based Unlinkability}
 $I_1,I_2$, sets of elements to be related, $p_r$, the probability two elements are related for an external observator:
-\begin{equation}
+\begin{equation*}
 	\sum_{\forall R \subseteq I_1 \times I_2}p_r \log(p_r)
-\end{equation}
+\end{equation*}
 
 \section{TODO: RFID STUFF}
 See exam 2010  ex 7 for an example.
@@ -239,6 +239,21 @@ P(1) = Ge^{-G}
    \hline
 \end{tabular}
 
+\subsection{Forward Error Correction (FEC)}
+Redundancy in packets to allow limited error correction at the receiver: used in 802.11a (Convolutional), HSDPA (Turbo Codes) and 802.11n (LDPC).
+
+\section{TCP}
+\subsection{Standard}
+\paragraph{Tahoe}
+\paragraph{Reno}
+\paragraph{New Reno}
+\subsection{Mobile}
+\paragraph{Indirect TCP (I-TCP)} Connection split at FA. Standard TCP on the wire line, wireless optimized TCP on the wifi side: shorter timeout, faster retransmission. Loss of end-to-end semantics, security issues.
+\paragraph{Mobile TCP (M-TCP)} Split connection at FA. Monitor packets, if a disconnect is detected, report receiver window $= 0$: sender will go into persist mode and doesn't timeout or modify his congestion window. Preserves end-to-end semantics. Disadv.: wifi losses propagate to the wire network, link-errors pkt loss must be resent by sender, security issues. \underline{Summary}: only handles mobility errors, no transmission errors.
+
+\paragraph{Snooping-TCP} TCP-aware link layer: Split connections, FA buffers and retransmits segments, does not ACK buffered packets (preserves end-to-end semantics).
+
+\paragraph{Transaction oriented TCP (T-TCP)} TCP phases: connection setup, data transmission, connection release. T-TCP combines does steps and only 2-3 packets are needed for short messages. Efficient for single packet transactions, but requires TCP modifications on all hosts.
 \end{document}
 
 
