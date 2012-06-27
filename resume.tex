@@ -48,17 +48,13 @@ b_{i,k} &= \frac{CW_i - k}{CW_i} \cdot \left \{ \begin{array}{ll}
 \end{align*}
 
 \section{Trunk dimensioning}
-For a trunk of $N$ channels, an offered load $A=\lambda E[X]$, $X$ the call duration, $Y$ the call arrival per sec $\sim$ Poisson($\lambda$) 
+For a trunk of $N$ channels, an offered load $A=\lambda E[X]$, $X$ the call duration, $Y$ the call arrival per sec $\sim$ Poisson($\lambda$) and $\rho$ the traffic carried by each channel: 
 \begin{align*}
 	P_\textrm{Blocking} &= P(\textrm{Drop a call because busy line})  \\
-	&= \frac{A^N}{N!\sum^N_{i=0}(\frac{A^i}{i!})}
+	&= \frac{A^N}{N!\sum^N_{i=0}(\frac{A^i}{i!})}\\
+	\rho &= \frac{(1 - P_\textrm{blocking})A}{N}
 \end{align*}
 
-Each channel carries the traffic 
-
-\begin{equation*}
-	\rho = \frac{(1 - P_\textrm{blocking})A}{N}
-\end{equation*}
 
 \paragraph{Cellular efficiency} $E = \frac{Conversations}{cells\times MHz}$
 
@@ -109,24 +105,8 @@ $f = \frac{N_0}{N_0 + \sum_iU_iN_{ai}}$ where $N_0$ = total interference power r
 \paragraph{Average received power from users in adjacent cell}
 $N_{ai} = \sum_j N_{ij}/U_i$ where $N_{ij}$ = power received at the base station of interest from the $j^\text{th}$ user in the $i^\text{th}$ cell
 
-\subsection{Propagation modes}
-\begin{multicols}{2}
-	\begin{description}
-		\item[Ground Wave] : $f \le 2$ Mhz
-		\item[Sky Wave]
-		\item[Line of Sight] : $f \ge 30$ Mhz
-	\end{description}
-\end{multicols}
-
-\subsection{Line of sight equations}
-Horizon distance $d[\textrm{km}]$ in \textbf{kilometers}, antenna height $h[\textrm{m}]$ and refraction adjustment factor $K = 4/3$:
-\begin{description}
-\item[Optical LOS]: $d = 3.57\sqrt{h}$
-\item[Effective LOS]: $d = 3.57\sqrt{Kh}$
-\item[Max LOS distance for two antennas :] $$3.57(\sqrt{Kh_1}+ \sqrt{Kh_2})$$
-\end{description}
-
 \section{Noise}
+\paragraph{Categories}: Thermal Noise, Intermodulation Noise, Cross-talk, Impulse Noise.
 \paragraph{Thermal Noise}$N_0 = kT\quad(W/Hz)$
 
 For signal power $S$, bitrate $R$, $k = 1.3806\cdot10^{-23} JK^{-1}$ the Boltzmann constant and $T$ the temperature: $\frac{E_b}{N_0} = \frac{S/R}{N_0} = \frac{S}{kTR}$
@@ -145,6 +125,8 @@ For signal power $S$, bitrate $R$, $k = 1.3806\cdot10^{-23} JK^{-1}$ the Boltzma
 If we have $n$ identical randomly located nodes each capable of transmitting $W$ bits/s. 
 Then the throughput $\lambda(n)$ obtainable by each node for a randomly chosen destination is $\lambda(n) = \Theta\left(\frac W{\sqrt{n\log n}}\right)$
 
+\paragraph{Routing} \emph{proactive}: DSDV, OLSR. \emph{reactive}: AODV, DSR
+
 \subsection{Antennas \& Propagation}
 Free space propagation, received power: $P_\textrm{R} = P_\textrm{T}\frac{A_\textrm{R}}{4\pi d^2}\eta_\textrm{R}$ with $\eta_\textrm{R}$ an efficiency parameter, $A_\textrm{R}$ the receiving antenna area.
 \\
@@ -160,10 +142,23 @@ $ c = 3 \cdot 10^8 $
 
 Parabola: $G = \frac{7A}{\lambda^2}$
 
-\underline{\textbf{Mobnet Decibels}}:
+\paragraph{Mobnet Decibels}:
 $B = 10\log(\frac{P}{P_0})$
+
+\paragraph{Propagation modes}
+\emph{Ground Wave}: $f \le 2$ Mhz, \emph{Sky Wave}, \emph{Line of Sight}: $f \ge 30$ Mhz
+
+\subsubsection{Line of sight equations}
+Horizon distance $d[\textrm{km}]$ in \textbf{kilometers}, antenna height $h[\textrm{m}]$ and refraction adjustment factor $K = 4/3$:
+\begin{description}
+\item[Optical LOS]: $d = 3.57\sqrt{h}$
+\item[Effective LOS]: $d = 3.57\sqrt{Kh}$
+\item[Max LOS distance for two antennas :] $$3.57(\sqrt{Kh_1}+ \sqrt{Kh_2})$$
+\end{description}
+
+
 \subsection{Free Space Loss}
-%TODO PICKUP HERE
+
 Free space loss, ideal isotropic antenna:
 $$ \frac{P_t}{P_r} = \frac{(4\pi d)^2}{\lambda^2} = \frac{(4\pi fd)^2}{c^2} $$
 Free space loss equation can be recast:
@@ -308,6 +303,9 @@ For \textbf{one} tag in $P_i$, the linkability probability is  $1/|P_i| \rightar
 
 \section{Comparisons}
 \includegraphics[height=\columnwidth, angle=270]{comparatif}
+\begin{center}
+This amazing cheat-sheet was brought to you by \emph{Julien Perrochet}, \emph{Christopher Chiche} and \emph{Tobias Schlatter}.
+\end{center}
 \end{multicols}
 \input{Acronymes}
 \end{document}
