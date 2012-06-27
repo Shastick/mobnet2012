@@ -14,7 +14,7 @@
 %Commands to format and shorten
 \setlength{\columnseprule}{0.2pt}
 \setlength{\parindent}{0cm}
-\setlength{\parskip}{-0.5em plus 0.2em}%plus 0.1ex minus 0.2ex}
+\setlength{\parskip}{-0.3em plus 0.2em}%plus 0.1ex minus 0.2ex}
 \pagestyle{empty} 
 
 
@@ -282,7 +282,26 @@ Tags are the leaves of a tree with branching factor $b$ and depth $d$, and each 
 \includegraphics[width=0.7\columnwidth]{img/anon_set.png}
 \end{center}
 
-\paragraph{Anonymity set} has minimum size of 1, maximum size of all the tags. Compromising a tag yields all the keys leading to it and permit to partition the other tags (neighbors in the tree share common keys) : $P_0$ contains the compromised tag, $P_1$ contains the compromised tag's \emph{brothers} not being in $P_0$, etc.
+\paragraph{Anonymity set} has minimum size of 1, maximum size of all the tags. Compromising a tag yields all the keys leading to it and permit to partition the other tags (neighbors in the tree share common keys) : $P_0$ contains the compromised tag, $P_1$ contains the compromised tag's \emph{brothers} not being in $P_0$, etc. Tags that belong to larger partitions have better privacy (e.g: tags in $P_3$ are not distinguishable, attacker only knows they don't use $k_1$.)
+
+\paragraph{Expected size of the anonymity set for a random tag}: for $n$ the total number of tags and $|P_i|/n$ the probability of selecting a tag from partition $P_i$
+
+\begin{equation*}
+\bar S = \sum_{i=0}^d \frac {|P_i|}n|P_i| =  \sum_{i=0}^d \frac {|P_i|^2}n
+\end{equation*}
+
+\paragraph{Normalized expected anonymity} : 
+Using $n = b^d$ and $|P_0| = 1, |P_1| = b-1, |P_2| = (b-1)b, \ldots, |P_l| = (b-1)b^{l-1}$.
+\begin{equation*}
+	\frac{\bar{S}}n = \sum_{i=0}^d \frac {|P_i|^2}{n^2} = \frac{b-1}{b+1} + \frac2{(b+1)n^2}
+\end{equation*}
+
+For \textbf{one} tag in $P_i$, the linkability probability is  $1/|P_i| \rightarrow$ global linkability in $P_i$ is $|P_i|\frac1{|P_i|} = 1$. For $l$ partitions, the probability that two transactions from a randomly chosen tag are linkable is:
+
+\begin{equation*}
+\frac1n\sum_{i=1}^l(|P_i|\frac1{|P_i|}) = \frac ln
+\end{equation*}
+With $n = b^d$
 \end{document}
 
 
