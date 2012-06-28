@@ -261,7 +261,7 @@ Redundancy in packets to allow limited error correction at the receiver: used in
 \paragraph{3GPP} (Improvements from GSM) Two-way authentication, avoid fake base station, cipher keys and auth data is now encrypted, integrity. Privacy/Anonymity not completely protected however.
 
 \section{Privacy}
-\paragraph{Privacy Related Notions}Anonymity, untraceability, unlinkeability, unobservability, pseudonymity
+\paragraph{Privacy Related Notions}Anonymity, untraceability, unlinkability, unobservability, pseudonymity
 \paragraph{Best to worst against information leakage:}
 GPS: no third-party, determined 'alone'.
 Cell-ID: requires the operator database that is relatively protected (they won't easily mine you).
@@ -283,8 +283,8 @@ $I_1,I_2$, sets of elements to be related, $p_r$, the probability two elements a
 
 \subsection{RFID}
 \paragraph{Standard tags possibilities}: Kill, Sleep, Rename, Block, (Legislation).
-\paragraph{Crypto enable tags possibilities}: Tree-approach, synchronization approach, hash chain based approach.
-\paragraph{Singulation} (determining which tags are present around the reader) Binary tree walking: reader first asks the tags to emit the first bit of their ID. If every answer is 0 (or 1) the reader knows on which side the ID's are. This is done recursively until all ID's are determined.
+\paragraph{Crypto enabled tags possibilities}: Tree-approach, synchronization approach, hash chain based approach.
+\paragraph{Singulation} (determining which tags are present around the reader) Binary tree walking: reader first asks the tags to emit the first bit of their ID. If every answer is 0 (or 1) the reader knows on which side the ID's are. This is done recursively until all ID's are determined. A \textbf{collision} is the event where ID's on both sides of a node answer and both sides must be recursed upon.
 
 \paragraph{Privacy zone} A tag ID can be changed so that it lies in the \emph{private} zone of the tree. A special device simulates collisions for every query in this area, so an exhaustive search would be required to find a tag. 
 
