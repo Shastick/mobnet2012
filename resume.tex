@@ -94,9 +94,9 @@ $P_r(\textrm{dBm}) = P_0(\textrm{dBm})-10\alpha\log(\frac{d}{d_0})$ with $P_0$ t
 \subsection{Capacity of a cellular network}
 For $B_\textrm{t}$ the total allocated spectrum and $B_\textrm{c}$ the channel bandwidth: 
 \begin{align*}
-m = \frac{B_t}{B_c \frac{Q^2}{3}} = \frac{B_t}{B_c\left(\frac{6}{3^{\frac{\alpha}{2}}}\left(\frac{S}{I}\right)_\textrm{min}\right)^{\frac{2}{\alpha}}}
+m = \frac{B_t}{B_c \frac{Q^2}{3}} = \frac{B_t}{B_c\left(\frac{6}{3^{\frac{\alpha}{2}}}\left(\frac{S}{I}\right)_\textrm{min}\right)^{\frac{2}{\alpha}}} = \lfloor\frac CN\rfloor
 \end{align*}
-For a cluster size $N$, $N = (i + j)^2 - ij$ for $i,j=0,1,2,\ldots$ and number of channels $C$ we have $m=\lfloor\frac CN\rfloor$
+For a cluster size $N$, $N = (i + j)^2 - ij$ for $i,j=0,1,2,\ldots$ and number of channels $C$.
 
 \subsubsection{CDMA Capacity: single cell case}
 For the bitrate $R$, available bandwidth $W$, noise spectral density $N_0$, thermal noise $\eta$, received user signal (at base station) $S$, we have a possible number $N$ of users:
@@ -108,7 +108,7 @@ intermittent nature of speech):
 \begin{align*}
 	N = 1 + \frac1\delta\frac{W/R}{E_b/N_0} - (\frac{\eta}{S})
 \end{align*}
-And if we have $m$ sectors, the effective capacity becomes $mN$
+And if we have $m$ sectors, the effective capacity becomes $mN$.
 \subsubsection{CDMA multiple cells}
 \paragraph{Frequency reuse factor on the uplink} 
 $f = \frac{N_0}{N_0 + \sum_iU_iN_{ai}}$ where $N_0$ = total interference power received from $N-1$ in-cell users, $U_i$ = number of users in the$i^\text{th}$ adjacent cell and $N_{ai}$ = average interference power from a user located in the $i^\text{th}$ adjacent cell
@@ -253,7 +253,7 @@ Redundancy in packets to allow limited error correction at the receiver: used in
 
 \paragraph{Snooping-TCP} TCP-aware link layer: Split connections, FA buffers and retransmits segments, does not ACK buffered packets (preserves end-to-end semantics).
 
-\paragraph{Transaction oriented TCP (T-TCP)} TCP phases: connection setup, data transmission, connection release. T-TCP combines does steps and only 2-3 packets are needed for short messages. Efficient for single packet transactions, but requires TCP modifications on all hosts.
+\paragraph{Transaction oriented TCP (T-TCP)} TCP phases: connection setup, data transmission, connection release. T-TCP combines these steps and only 2-3 packets are needed for short messages. Efficient for single packet transactions, but requires TCP modifications on all hosts.
 
 \section{Security}
 \paragraph{Security Requirements}: Confidentiality, Authenticity, Replay Detection, Integrity, Access Control, Jamming Protection.
@@ -322,7 +322,12 @@ For \textbf{one} tag in $P_i$, the linkability probability is  $1/|P_i| \rightar
 This amazing cheat-sheet was brought to you by \emph{Julien Perrochet}, \emph{Christopher Chiche} and \emph{Tobias Schlatter}. Follow us on GitHub: \url{https://github.com/Shastick/mobnet2012} !
 \end{center}
 \end{multicols}
-\vspace{-7pt}
+
+\begin{center}
+\vspace{-10pt}
+Values of $N$: 0,1,3,4,7,9,12,13,16,19,21,25,27,28,31,37,39,48,49,57,61,67,73,75,79,84,91,93,97
+\end{center}
+\vspace{-5pt}
 \hrule
 \vspace{-10pt}
 \input{Acronymes}
